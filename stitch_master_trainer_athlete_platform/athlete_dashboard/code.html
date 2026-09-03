@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Trainer - Athlete Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#131318",
+                      "on-secondary-fixed-variant": "#095300",
+                      "on-surface-variant": "#c2c6d8",
+                      "outline-variant": "#424656",
+                      "surface-tint": "#b3c5ff",
+                      "inverse-primary": "#0054d6",
+                      "on-tertiary-container": "#f8f8f8",
+                      "background": "#131318",
+                      "tertiary-container": "#707272",
+                      "outline": "#8c90a1",
+                      "surface": "#131318",
+                      "on-primary-container": "#f8f7ff",
+                      "on-error-container": "#ffdad6",
+                      "error": "#ffb4ab",
+                      "primary-container": "#0066ff",
+                      "secondary-fixed-dim": "#2ae500",
+                      "surface-bright": "#39383e",
+                      "primary": "#b3c5ff",
+                      "surface-container": "#1f1f25",
+                      "secondary-fixed": "#79ff5b",
+                      "tertiary-fixed": "#e2e2e2",
+                      "on-background": "#e4e1e9",
+                      "on-secondary-container": "#0f6d00",
+                      "secondary": "#d7ffc5",
+                      "on-primary-fixed-variant": "#003fa4",
+                      "surface-container-high": "#2a292f",
+                      "primary-fixed": "#dae1ff",
+                      "on-secondary": "#053900",
+                      "surface-container-highest": "#35343a",
+                      "on-primary-fixed": "#001849",
+                      "inverse-on-surface": "#303036",
+                      "on-secondary-fixed": "#022100",
+                      "error-container": "#93000a",
+                      "tertiary": "#c6c6c7",
+                      "on-tertiary-fixed-variant": "#454747",
+                      "on-tertiary": "#2f3131",
+                      "on-error": "#690005",
+                      "secondary-container": "#2ff801",
+                      "tertiary-fixed-dim": "#c6c6c7",
+                      "primary-fixed-dim": "#b3c5ff",
+                      "inverse-surface": "#e4e1e9",
+                      "surface-variant": "#35343a",
+                      "surface-container-low": "#1b1b20",
+                      "on-tertiary-fixed": "#1a1c1c",
+                      "surface-container-lowest": "#0e0e13",
+                      "on-primary": "#002b75",
+                      "on-surface": "#e4e1e9"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "40px",
+                      "margin-desktop": "48px",
+                      "md": "24px",
+                      "xl": "64px",
+                      "base": "8px",
+                      "sm": "12px",
+                      "gutter": "16px",
+                      "margin-mobile": "20px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Montserrat"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Montserrat"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Montserrat"
+                      ],
+                      "headline-lg": [
+                              "Montserrat"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "34px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "800"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        /* Base styles mapped to design tokens */
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+            font-family: theme('fontFamily.body-md');
+        }
+
+        /* Material Icons setup */
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Custom Gradients and Effects for the High-Energy Dark Theme */
+        .premium-card {
+            background: linear-gradient(135deg, #1C1C26 0%, #16161E 100%);
+            border: 1px solid theme('colors.surface-container-highest');
+        }
+        
+        .electric-glow:hover {
+            box-shadow: 0 0 15px theme('colors.primary-container');
+        }
+
+        /* Progress Bar Base Styles */
+        .progress-track {
+            background-color: #272732;
+        }
+        
+        .progress-fill {
+            background-color: #39FF14; /* Bright Green */
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+<!-- Navigation Drawer (Desktop/Tablet) -->
+<nav class="hidden md:flex bg-surface-container h-screen w-80 rounded-r-xl shadow-xl flex-col p-md fixed inset-y-0 left-0 z-[60] border-r border-outline-variant">
+<!-- Brand Header -->
+<div class="mb-xl">
+<h1 class="font-display-lg text-headline-md tracking-tighter text-primary">MASTER TRAINER</h1>
+</div>
+<!-- Navigation Links -->
+<ul class="flex flex-col gap-base flex-1">
+<li>
+<a class="flex items-center gap-sm px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-bold transition-transform hover:scale-95" href="#">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-body-lg text-body-lg">Home</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all hover:text-primary" href="#">
+<span class="material-symbols-outlined">fitness_center</span>
+<span class="font-body-lg text-body-lg">Exercises</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all hover:text-primary" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-body-lg text-body-lg">Programs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all hover:text-primary" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-body-lg text-body-lg">Nutrition</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all hover:text-primary" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-body-lg text-body-lg">Knowledge</span>
+</a>
+</li>
+</ul>
+<!-- Bottom Nav Item -->
+<div class="mt-auto">
+<a class="flex items-center gap-sm px-md py-sm text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all hover:text-primary" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-lg text-body-lg">Profile</span>
+</a>
+</div>
+</nav>
+<!-- Top App Bar (Mobile Only) -->
+<header class="md:hidden bg-surface-dim border-b border-outline-variant fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 transition-colors duration-200 ease-in-out">
+<button class="text-on-surface-variant hover:bg-surface-bright p-sm rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display-lg text-headline-md tracking-tighter text-primary">MASTER TRAINER</h1>
+<button class="text-on-surface-variant hover:bg-surface-bright p-sm rounded-full transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full md:pl-80 pt-16 md:pt-0 min-h-screen flex flex-col">
+<div class="max-w-[1440px] w-full mx-auto px-margin-mobile md:px-margin-desktop py-lg flex flex-col gap-lg flex-1">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-end gap-md">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Welcome back, Athlete!</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Ready to crush today's goals?</p>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md auto-rows-min">
+<!-- Today's Workout (Hero Card) - Spans 8 cols on desktop -->
+<article class="premium-card rounded-xl p-md flex flex-col justify-between col-span-1 md:col-span-8 min-h-[300px] relative overflow-hidden group">
+<div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-overlay transition-transform duration-500 group-hover:scale-105" data-alt="A low-angle, high-contrast shot inside a dark, modern gym. Intense electric blue lighting illuminates heavy kettlebells and a sleek plyometric box. Deep shadows contrast with bright highlights, emphasizing a high-tech, elite training environment. Cinematic depth of field." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDdicm0SaMaSM6USYJvELn4Yp6tuoWgaZEGG-iDHArCls1tHRyOqRhlDNEM689NcGmpjrg8_I1IdoZ6wv0YT9pfXAjPJS08UU2SKpN_ldATEpjqMQNgvoZNB5OKk12Y0iKP9K2kSSOSQdRWFvAL2loi065kxZfaSwLNDbTk8lbtgdcWCBI0oIjdQK6BFSf0okZXlbUgD3uNGVqxtl2roMLUE92Jp5749XEcdC5YY1hTz8TGlhf3yOhCbA')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-transparent to-transparent opacity-80"></div>
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div class="flex justify-between items-start">
+<span class="bg-primary-container/20 text-primary font-label-sm text-label-sm px-sm py-xs rounded-full uppercase tracking-wider backdrop-blur-sm">Today's Workout</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm bg-surface-dim/50 px-sm py-xs rounded-full backdrop-blur-sm">45 Min</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm">Movement Fundamentals - Day 12</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md max-w-md">Focus on hip mobility, explosive power generation, and core stability to build a robust athletic base.</p>
+<button class="bg-primary-container hover:bg-inverse-primary text-on-primary-container font-body-md text-body-md font-bold py-sm px-md rounded-full transition-all electric-glow flex items-center gap-sm inline-flex">
+<span class="material-symbols-outlined">play_arrow</span>
+                                Resume
+                            </button>
+</div>
+</div>
+</article>
+<!-- Current Program Card - Spans 4 cols on desktop -->
+<article class="premium-card rounded-xl p-md flex flex-col col-span-1 md:col-span-4 justify-between min-h-[300px]">
+<div>
+<div class="flex justify-between items-center mb-md">
+<h3 class="font-headline-md text-body-lg text-on-surface font-semibold">Current Program</h3>
+<span class="material-symbols-outlined text-primary">fitness_center</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface mb-xs">30-Day Athletic Foundation</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-xl">Week 2 - Hypertrophy Phase</p>
+</div>
+<div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant mb-xs">
+<span>Progress</span>
+<span class="text-primary font-bold">45%</span>
+</div>
+<div class="h-2 w-full progress-track rounded-full overflow-hidden">
+<div class="h-full progress-fill rounded-full" style="width: 45%;"></div>
+</div>
+</div>
+</article>
+<!-- Stats Row - Spans full width, internal grid -->
+<div class="col-span-1 md:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-md">
+<!-- Stat 1 -->
+<div class="premium-card rounded-xl p-md flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-secondary-container mb-sm text-3xl">local_fire_department</span>
+<span class="font-display-lg text-headline-lg text-on-surface mb-xs">12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Day Streak</span>
+</div>
+<!-- Stat 2 -->
+<div class="premium-card rounded-xl p-md flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary mb-sm text-3xl">task_alt</span>
+<span class="font-display-lg text-headline-lg text-on-surface mb-xs">24</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Completed</span>
+</div>
+<!-- Stat 3 -->
+<div class="premium-card rounded-xl p-md flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary mb-sm text-3xl">emoji_events</span>
+<span class="font-display-lg text-headline-lg text-on-surface mb-xs">3</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Personal Records</span>
+</div>
+<!-- Weekly Training Overview -->
+<div class="premium-card rounded-xl p-md flex flex-col justify-center">
+<h3 class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-md text-center">Weekly Training</h3>
+<div class="flex justify-between items-center">
+<div class="flex flex-col items-center gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">M</span>
+<div class="w-6 h-6 rounded-full bg-secondary-container/20 flex items-center justify-center"><span class="material-symbols-outlined text-secondary-container text-sm" style="font-size: 16px;">check</span></div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">T</span>
+<div class="w-6 h-6 rounded-full bg-secondary-container/20 flex items-center justify-center"><span class="material-symbols-outlined text-secondary-container text-sm" style="font-size: 16px;">check</span></div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-label-sm text-label-sm text-on-surface">W</span>
+<div class="w-6 h-6 rounded-full border border-primary text-primary flex items-center justify-center font-bold" style="font-size: 12px;"></div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-label-sm text-label-sm text-outline-variant">T</span>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-label-sm text-label-sm text-outline-variant">F</span>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-label-sm text-label-sm text-outline-variant">S</span>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="flex flex-col items-center gap-xs">
+<span class="font-label-sm text-label-sm text-outline-variant">S</span>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Knowledge Feed - Spans full width -->
+<section class="col-span-1 md:col-span-12 flex flex-col gap-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">Knowledge Feed</h3>
+<a class="premium-card rounded-xl p-md flex flex-col md:flex-row items-center gap-md group hover:border-primary transition-colors" href="#">
+<div class="w-full md:w-48 h-32 rounded-lg bg-cover bg-center shrink-0" data-alt="A macro shot of a sleek, black shaker bottle filled with a bright green recovery shake, resting on a matte black gym floor. Beside it, high-end, dark-themed sports supplements are neatly arranged. Lighting is dramatic, casting long shadows, emphasizing the premium fitness lifestyle." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDncZnQC69Lb3vVqGFXfoyCMR4gaIjjQ6_xSB9qOZWbjK7u9LJwGiCy_MHRfJakqeAZzJx9R27CYqr4s38_6JevXFCZ-8BPVEvrXfFCD55AgKCOEDJo4w4WRozEo1cZNOPyFLh7ezupnNPeHbgp-DWHbFzHzpX8NEX-RxI5lUcvAgKFLxOON5yYw-FKmTPS_J-UJwlHuPzCocTb76B0s7EHjOKp88JgNssKSq5ydC5vNldBURUkF_A7Cg')"></div>
+<div class="flex-1 flex flex-col justify-center">
+<span class="bg-surface-bright text-primary font-label-sm text-label-sm px-sm py-xs rounded-full uppercase tracking-wider inline-block w-max mb-sm">New Article</span>
+<h4 class="font-headline-md text-body-lg text-on-surface font-semibold mb-xs group-hover:text-primary transition-colors">Nutrition for Recovery: The 30-Minute Window</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Optimize your post-workout fueling strategy to accelerate muscle repair and enhance adaptation after intense athletic sessions.</p>
+</div>
+<div class="hidden md:flex shrink-0 p-sm bg-surface-bright rounded-full group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</div>
+</a>
+</section>
+</div>
+</div>
+<!-- Footer -->
+<footer class="mt-auto bg-surface-container-lowest border-t border-outline-variant w-full py-xl px-margin-mobile flex flex-col items-center text-center gap-gutter">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-md">MASTER TRAINER</h2>
+<ul class="flex flex-wrap justify-center gap-md mb-md">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Exercises</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Programs</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Nutrition</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Knowledge</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Safety Disclaimer</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors cursor-pointer" href="#">Privacy Policy</a></li>
+</ul>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">© 2024 Master Trainer Elite Athlete Development. All rights reserved.</p>
+</footer>
+</main>
+</body></html>

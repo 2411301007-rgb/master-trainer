@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Trainer - Exercise Detail</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131318",
+                        "on-secondary-fixed-variant": "#095300",
+                        "on-surface-variant": "#c2c6d8",
+                        "outline-variant": "#424656",
+                        "surface-tint": "#b3c5ff",
+                        "inverse-primary": "#0054d6",
+                        "on-tertiary-container": "#f8f8f8",
+                        "background": "#131318",
+                        "tertiary-container": "#707272",
+                        "outline": "#8c90a1",
+                        "surface": "#131318",
+                        "on-primary-container": "#f8f7ff",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "primary-container": "#0066ff",
+                        "secondary-fixed-dim": "#2ae500",
+                        "surface-bright": "#39383e",
+                        "primary": "#b3c5ff",
+                        "surface-container": "#1f1f25",
+                        "secondary-fixed": "#79ff5b",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-background": "#e4e1e9",
+                        "on-secondary-container": "#0f6d00",
+                        "secondary": "#d7ffc5",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "surface-container-high": "#2a292f",
+                        "primary-fixed": "#dae1ff",
+                        "on-secondary": "#053900",
+                        "surface-container-highest": "#35343a",
+                        "on-primary-fixed": "#001849",
+                        "inverse-on-surface": "#303036",
+                        "on-secondary-fixed": "#022100",
+                        "error-container": "#93000a",
+                        "tertiary": "#c6c6c7",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-tertiary": "#2f3131",
+                        "on-error": "#690005",
+                        "secondary-container": "#2ff801",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "inverse-surface": "#e4e1e9",
+                        "surface-variant": "#35343a",
+                        "surface-container-low": "#1b1b20",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-container-lowest": "#0e0e13",
+                        "on-primary": "#002b75",
+                        "on-surface": "#e4e1e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "margin-desktop": "48px",
+                        "md": "24px",
+                        "xl": "64px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "gutter": "16px",
+                        "margin-mobile": "20px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0F;
+            color: #e4e1e9;
+        }
+        .premium-card {
+            background: linear-gradient(135deg, #1C1C26 0%, #16161E 100%);
+            border: 1px solid #272732;
+        }
+        .hotspot {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: #0066ff;
+            border-radius: 50%;
+            border: 2px solid white;
+            cursor: pointer;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(0, 102, 255, 0.8);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .hotspot:hover, .hotspot.active {
+            transform: translate(-50%, -50%) scale(1.2);
+            box-shadow: 0 0 20px rgba(0, 102, 255, 1);
+        }
+        .hotspot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen pb-xl">
+<!-- TopAppBar -->
+<header class="bg-surface-dim dark:bg-surface-dim font-headline-md text-headline-md docked full-width top-0 border-b border-outline-variant dark:border-outline-variant flat no shadows transition-colors duration-200 ease-in-out fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16">
+<button class="text-primary dark:text-primary hover:bg-surface-bright dark:hover:bg-surface-bright p-2 rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<span class="font-display-lg text-display-lg tracking-tighter text-primary dark:text-primary text-[20px]">MASTER TRAINER</span>
+<button class="text-primary dark:text-primary hover:bg-surface-bright dark:hover:bg-surface-bright p-2 rounded-full flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+</header>
+<!-- SideNav (Desktop) / Drawer -->
+<nav class="hidden md:flex bg-surface-container dark:bg-surface-container font-body-lg text-body-lg h-full w-80 rounded-r-xl shadow-xl fixed inset-y-0 left-0 z-[60] flex-col p-md mt-16 border-r border-outline-variant">
+<div class="font-display-lg text-display-lg text-primary dark:text-primary mb-lg text-[24px]">MASTER TRAINER</div>
+<ul class="flex flex-col gap-sm">
+<li><a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#"><span class="material-symbols-outlined" data-icon="home">home</span> Home</a></li>
+<li><a class="flex items-center gap-sm p-sm bg-primary-container text-on-primary-container rounded-lg font-bold hover:bg-surface-variant dark:hover:bg-surface-variant transition-all scale-95" href="#"><span class="material-symbols-outlined" data-icon="fitness_center">fitness_center</span> Exercises</a></li>
+<li><a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#"><span class="material-symbols-outlined" data-icon="event_note">event_note</span> Programs</a></li>
+<li><a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#"><span class="material-symbols-outlined" data-icon="restaurant">restaurant</span> Nutrition</a></li>
+<li><a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#"><span class="material-symbols-outlined" data-icon="menu_book">menu_book</span> Knowledge</a></li>
+<li><a class="flex items-center gap-sm p-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#"><span class="material-symbols-outlined" data-icon="person">person</span> Profile</a></li>
+</ul>
+</nav>
+<!-- Main Content -->
+<main class="pt-24 px-margin-mobile md:ml-80 max-w-5xl mx-auto space-y-lg">
+<!-- Header & Media -->
+<section class="space-y-md">
+<div>
+<h1 class="font-display-lg text-display-lg md:text-[56px] text-white">Barbell Squat</h1>
+<p class="font-body-lg text-body-lg text-outline mt-xs">The foundational compound movement for lower body strength and power.</p>
+</div>
+<div class="relative w-full aspect-video rounded-xl overflow-hidden premium-card group cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-300" data-alt="A highly detailed cinematic shot of a professional athlete performing a heavy barbell back squat in a dark, high-end training facility. Deep shadows contrast with bright, cool blue neon accent lighting, highlighting the athlete's intense focus and muscular exertion. The environment is industrial yet modern, conveying a premium performance atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTLDfMPOQMJeMnc4Zxv9tmd6Ms7UAQNHrXyL_AE1aJtL8qhoxOUi7MjQBmuSpwEO-fJEYVH5xdt1-XoToPoyuL52ptGcNkOmxgEyrLdW5Uh9fekvYxsWp_8-haL2P5zUOvmHdzuYzjzJf0-6tTFHI9ha6CSdihBiUqaDUhSNtoK24HXJhFtbm67sppOFq3qxldc_4UEc04f1QwnMkUEigEw33zBFjPJuzalispGy7qNfd8T4by1j0CDg"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-16 h-16 bg-primary-container rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(0,102,255,0.5)] group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-white text-3xl ml-1" data-icon="play_arrow">play_arrow</span>
+</div>
+</div>
+</div>
+<!-- Metadata Chips -->
+<div class="flex flex-wrap gap-sm">
+<div class="px-3 py-1 rounded-full bg-primary-container/20 border border-primary-container text-primary font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="signal_cellular_alt_1_bar">signal_cellular_alt_1_bar</span>
+                    Beginner
+                </div>
+<div class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant text-on-surface font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="fitness_center">fitness_center</span>
+                    Barbell
+                </div>
+<div class="px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant text-on-surface font-label-sm text-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="repeat">repeat</span>
+                    3-4 Sets, 8-12 Reps
+                </div>
+</div>
+</section>
+<!-- Bento Grid Layout for Details -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Left Column (Interactive & Benefits) -->
+<div class="md:col-span-7 space-y-md">
+<!-- Position Check Component -->
+<section class="premium-card rounded-xl p-md relative overflow-hidden">
+<h2 class="font-headline-md text-headline-md text-white mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="accessibility_new">accessibility_new</span>
+                        Position Check
+                    </h2>
+<p class="font-body-md text-body-md text-outline mb-md">Tap hotspots for critical alignment cues.</p>
+<div class="relative w-full aspect-square md:aspect-[4/3] rounded-lg overflow-hidden border border-outline-variant bg-surface-container-lowest">
+<img class="w-full h-full object-cover opacity-70" data-alt="A detailed, stylized blueprint-style anatomical illustration of a person in the bottom position of a barbell squat. The background is dark grey with a faint grid. The figure is rendered in white outlines with subtle blue shading to indicate muscle groups, conveying a precise, technical, and analytical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATmGS6jH9OyVRN8AEJKGzm8usS5l27sPw2dezabxFc1Kgee6GrHHRI4K9bKlhC88bA4XP6jaMUWJoX1wMN6ncJwquBPUuYDldGxP1Y_dVD9xOzw91BpJ4xEV2VUeG4rSMcq5oIHFsNg0RapA0o4_W_B24tTtYEfx2zw-3NnOuu7N08Vt7PIAc1b4TbXJd6MY_URs0Odu-VsXehhE4WAag9s2CeFONhThLcoogOAx-Tp31aBG_9IWvpKA"/>
+<!-- Hotspots (Positions are approximate percentages) -->
+<div class="hotspot" data-tip="HEAD -&gt; Neutral spine, gaze slightly down." style="top: 25%; left: 45%;"></div>
+<div class="hotspot" data-tip="SPINE -&gt; Maintain natural curve, chest up." style="top: 35%; left: 55%;"></div>
+<div class="hotspot" data-tip="CORE -&gt; Braced tightly, 360-degree expansion." style="top: 50%; left: 50%;"></div>
+<div class="hotspot" data-tip="KNEES -&gt; Tracking over toes, not caving in." style="top: 65%; left: 35%;"></div>
+<div class="hotspot" data-tip="FEET -&gt; Rooted, weight balanced mid-foot." style="top: 85%; left: 45%;"></div>
+<!-- Tip Display Box -->
+<div class="absolute bottom-4 left-4 right-4 bg-surface-dim/90 backdrop-blur-md border border-primary p-3 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none" id="tip-box">
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-wider mb-1" id="tip-title">Alignment</p>
+<p class="font-body-md text-body-md text-white" id="tip-content">Select a hotspot to view cue.</p>
+</div>
+</div>
+</section>
+<!-- What This Does -->
+<section class="premium-card rounded-xl p-md">
+<h2 class="font-headline-md text-headline-md text-white mb-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+                        What This Does
+                    </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        The barbell squat primarily targets the quadriceps, glutes, and hamstrings while demanding immense core stability and lower back strength. It stimulates central nervous system adaptation, leading to comprehensive lower body power and structural integrity.
+                    </p>
+</section>
+</div>
+<!-- Right Column (Steps, Mistakes, Coaching) -->
+<div class="md:col-span-5 space-y-md">
+<!-- Step-by-Step -->
+<section class="premium-card rounded-xl p-md">
+<h2 class="font-headline-md text-headline-md text-white mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="format_list_numbered">format_list_numbered</span>
+                        Step-by-Step
+                    </h2>
+<ul class="space-y-4">
+<li class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container flex-shrink-0 flex items-center justify-center font-bold text-primary border border-outline-variant">1</div>
+<p class="font-body-md text-body-md text-on-surface-variant"><strong class="text-white">Setup:</strong> Position bar across upper back (traps/rear delts). Unrack, take 2 steps back.</p>
+</li>
+<li class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container flex-shrink-0 flex items-center justify-center font-bold text-primary border border-outline-variant">2</div>
+<p class="font-body-md text-body-md text-on-surface-variant"><strong class="text-white">Descent:</strong> Break at hips and knees simultaneously. Lower until thighs are parallel to floor.</p>
+</li>
+<li class="flex gap-4">
+<div class="w-8 h-8 rounded-full bg-surface-container flex-shrink-0 flex items-center justify-center font-bold text-primary border border-outline-variant">3</div>
+<p class="font-body-md text-body-md text-on-surface-variant"><strong class="text-white">Ascent:</strong> Drive through mid-foot, keeping chest up and knees tracking out. Return to start.</p>
+</li>
+</ul>
+</section>
+<!-- Coaching Tips -->
+<section class="bg-surface-container-high rounded-xl p-md border-l-4 border-primary">
+<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-primary mb-2">Pro Coaching Tip</h3>
+<p class="font-body-lg text-body-lg text-white italic">
+                        "Imagine spreading the floor apart with your feet as you stand up. This forcefully engages the gluteus medius and prevents knee valgus."
+                    </p>
+</section>
+<!-- Common Mistakes (Warning) -->
+<section class="premium-card rounded-xl p-md border border-error/30">
+<h2 class="font-headline-md text-headline-md text-error mb-md flex items-center gap-2">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+                        Common Mistakes
+                    </h2>
+<ul class="space-y-3">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[20px] mt-1" data-icon="close">close</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Knees caving inward (valgus collapse) during ascent.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[20px] mt-1" data-icon="close">close</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Losing lower back neutrality (butt wink) at the bottom.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-error text-[20px] mt-1" data-icon="close">close</span>
+<span class="font-body-md text-body-md text-on-surface-variant">Heels raising off the ground due to poor ankle mobility.</span>
+</li>
+</ul>
+</section>
+</div>
+</div>
+<!-- Safety Disclaimer -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md text-center mt-xl">
+<span class="material-symbols-outlined text-outline mb-2 text-3xl" data-icon="health_and_safety">health_and_safety</span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Safety Notice</h3>
+<p class="font-body-md text-body-md text-outline max-w-2xl mx-auto">
+                Always perform heavy squats inside a power rack with safety pins set at appropriate heights. If you experience sharp pain, terminate the set immediately. Master form with light weight before progressing.
+            </p>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest font-body-md text-body-md w-full py-xl border-t border-outline-variant dark:border-outline-variant flat no shadows flex flex-col items-center text-center px-margin-mobile gap-gutter mt-xl">
+<div class="font-headline-md text-headline-md text-on-surface dark:text-on-surface mb-md">MASTER TRAINER</div>
+<ul class="flex flex-wrap justify-center gap-md">
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Exercises</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Programs</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Nutrition</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Knowledge</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Safety Disclaimer</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Privacy Policy</a></li>
+</ul>
+<div class="text-outline mt-md text-sm">© 2024 Master Trainer Elite Athlete Development. All rights reserved.</div>
+</footer>
+<script>
+        // Hotspot Interaction Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const hotspots = document.querySelectorAll('.hotspot');
+            const tipBox = document.getElementById('tip-box');
+            const tipTitle = document.getElementById('tip-title');
+            const tipContent = document.getElementById('tip-content');
+
+            hotspots.forEach(spot => {
+                spot.addEventListener('click', (e) => {
+                    // Reset all
+                    hotspots.forEach(h => h.classList.remove('active'));
+                    // Set active
+                    e.target.classList.add('active');
+                    
+                    // Parse tip text (e.g. "CORE -> Braced")
+                    const rawTip = e.target.getAttribute('data-tip');
+                    const parts = rawTip.split('->');
+                    
+                    if(parts.length === 2) {
+                        tipTitle.textContent = parts[0].trim();
+                        tipContent.textContent = parts[1].trim();
+                    } else {
+                        tipTitle.textContent = "Cue";
+                        tipContent.textContent = rawTip;
+                    }
+                    
+                    // Show box
+                    tipBox.classList.remove('opacity-0');
+                });
+            });
+
+            // Hide box if clicking outside image area
+            document.addEventListener('click', (e) => {
+                if(!e.target.classList.contains('hotspot') && !tipBox.contains(e.target)) {
+                    hotspots.forEach(h => h.classList.remove('active'));
+                    tipBox.classList.add('opacity-0');
+                }
+            });
+        });
+    </script>
+</body></html>

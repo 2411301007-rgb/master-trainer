@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Master Trainer - Exercise Library</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#131318",
+                        "on-secondary-fixed-variant": "#095300",
+                        "on-surface-variant": "#c2c6d8",
+                        "outline-variant": "#424656",
+                        "surface-tint": "#b3c5ff",
+                        "inverse-primary": "#0054d6",
+                        "on-tertiary-container": "#f8f8f8",
+                        "background": "#131318",
+                        "tertiary-container": "#707272",
+                        "outline": "#8c90a1",
+                        "surface": "#131318",
+                        "on-primary-container": "#f8f7ff",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "primary-container": "#0066ff",
+                        "secondary-fixed-dim": "#2ae500",
+                        "surface-bright": "#39383e",
+                        "primary": "#b3c5ff",
+                        "surface-container": "#1f1f25",
+                        "secondary-fixed": "#79ff5b",
+                        "tertiary-fixed": "#e2e2e2",
+                        "on-background": "#e4e1e9",
+                        "on-secondary-container": "#0f6d00",
+                        "secondary": "#d7ffc5",
+                        "on-primary-fixed-variant": "#003fa4",
+                        "surface-container-high": "#2a292f",
+                        "primary-fixed": "#dae1ff",
+                        "on-secondary": "#053900",
+                        "surface-container-highest": "#35343a",
+                        "on-primary-fixed": "#001849",
+                        "inverse-on-surface": "#303036",
+                        "on-secondary-fixed": "#022100",
+                        "error-container": "#93000a",
+                        "tertiary": "#c6c6c7",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "on-tertiary": "#2f3131",
+                        "on-error": "#690005",
+                        "secondary-container": "#2ff801",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "primary-fixed-dim": "#b3c5ff",
+                        "inverse-surface": "#e4e1e9",
+                        "surface-variant": "#35343a",
+                        "surface-container-low": "#1b1b20",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "surface-container-lowest": "#0e0e13",
+                        "on-primary": "#002b75",
+                        "on-surface": "#e4e1e9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "40px",
+                        "margin-desktop": "48px",
+                        "md": "24px",
+                        "xl": "64px",
+                        "base": "8px",
+                        "sm": "12px",
+                        "gutter": "16px",
+                        "margin-mobile": "20px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Montserrat"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Montserrat"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-md": ["Montserrat"],
+                        "headline-lg": ["Montserrat"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["28px", { "lineHeight": "34px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex selection:bg-primary-container selection:text-on-primary-container">
+<!-- NavigationDrawer -->
+<nav class="hidden md:flex flex-col h-full w-80 rounded-r-xl shadow-xl bg-surface-container dark:bg-surface-container fixed inset-y-0 left-0 z-[60] p-md">
+<div class="mb-lg">
+<h1 class="font-display-lg text-display-lg text-primary dark:text-primary tracking-tighter">MASTER TRAINER</h1>
+</div>
+<ul class="flex flex-col gap-sm flex-grow">
+<li>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-body-lg text-body-lg">Home</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm bg-primary-container text-on-primary-container rounded-lg font-bold Active: scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fitness_center</span>
+<span class="font-body-lg text-body-lg">Exercises</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-body-lg text-body-lg">Programs</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-body-lg text-body-lg">Nutrition</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="font-body-lg text-body-lg">Knowledge</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-md py-sm rounded-lg text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-body-lg text-body-lg">Profile</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- TopAppBar (Mobile) -->
+<header class="md:hidden fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface-dim dark:bg-surface-dim border-b border-outline-variant dark:border-outline-variant transition-colors duration-200 ease-in-out">
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright dark:hover:bg-surface-bright p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-display-lg text-display-lg tracking-tighter text-primary dark:text-primary text-[24px] leading-tight">MASTER TRAINER</h1>
+<button class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-bright dark:hover:bg-surface-bright p-sm rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined">search</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="w-full md:pl-80 pt-16 md:pt-0 min-h-screen flex flex-col">
+<!-- Hero / Search Section -->
+<section class="px-margin-mobile md:px-margin-desktop py-lg md:py-xl border-b border-outline-variant">
+<div class="max-w-5xl mx-auto">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-md">Exercise Library</h1>
+<div class="flex flex-col md:flex-row gap-gutter items-center">
+<div class="relative w-full flex-grow">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded-lg py-sm pl-xl pr-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all font-body-md text-body-md" placeholder="Search exercises..." type="text"/>
+</div>
+<button class="flex items-center gap-xs px-md py-sm bg-surface-container border border-outline-variant rounded-lg hover:border-primary transition-colors text-on-surface whitespace-nowrap">
+<span class="material-symbols-outlined">tune</span>
+<span class="font-label-sm text-label-sm">Filters</span>
+</button>
+</div>
+<!-- Filter Chips -->
+<div class="flex flex-wrap gap-xs mt-md">
+<span class="px-sm py-xs bg-primary-container/10 border border-primary/20 text-primary rounded-full font-label-sm text-label-sm cursor-pointer hover:bg-primary-container/20 transition-colors">Muscle Group</span>
+<span class="px-sm py-xs bg-surface-container border border-outline-variant text-on-surface-variant rounded-full font-label-sm text-label-sm cursor-pointer hover:bg-surface-variant transition-colors">Goal</span>
+<span class="px-sm py-xs bg-surface-container border border-outline-variant text-on-surface-variant rounded-full font-label-sm text-label-sm cursor-pointer hover:bg-surface-variant transition-colors">Sport</span>
+<span class="px-sm py-xs bg-surface-container border border-outline-variant text-on-surface-variant rounded-full font-label-sm text-label-sm cursor-pointer hover:bg-surface-variant transition-colors">Difficulty</span>
+</div>
+</div>
+</section>
+<!-- Category Tabs -->
+<section class="px-margin-mobile md:px-margin-desktop pt-md border-b border-outline-variant bg-surface-container-low overflow-x-auto no-scrollbar">
+<div class="max-w-5xl mx-auto flex gap-lg font-body-md text-body-md">
+<button class="text-primary border-b-2 border-primary pb-sm font-bold whitespace-nowrap">Strength</button>
+<button class="text-on-surface-variant pb-sm hover:text-on-surface transition-colors whitespace-nowrap">Speed</button>
+<button class="text-on-surface-variant pb-sm hover:text-on-surface transition-colors whitespace-nowrap">Agility</button>
+<button class="text-on-surface-variant pb-sm hover:text-on-surface transition-colors whitespace-nowrap">Mobility</button>
+<button class="text-on-surface-variant pb-sm hover:text-on-surface transition-colors whitespace-nowrap">Recovery</button>
+</div>
+</section>
+<!-- Exercise Grid -->
+<section class="px-margin-mobile md:px-margin-desktop py-lg md:py-xl flex-grow">
+<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Card 1 -->
+<article class="bg-surface-container border border-outline-variant rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-[0_0_15px_rgba(0,102,255,0.15)] transition-all duration-300 flex flex-col group">
+<div class="relative h-48 w-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic, high-contrast medium shot of an elite athlete performing a heavy barbell back squat in a modern, dark high-tech training facility. The scene is lit with dramatic overhead spotlights cutting through subtle gym chalk dust, emphasizing the athlete's muscular tension and pristine form. Electric blue LED strips in the background create a sleek, performance-focused corporate modern aesthetic. Deep shadows and stark highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDw_CMN_dNgXyb49aQBL8VkGj8DvV1DAegWaStkNgSmmSbaZPsW87Ptp2bQo-rFzF5bZaM6oInUl5FAsDdcOPf3jGqJQV2vnpYo6M5q_awT9HYCCSpGPI8Sw0wFjsu4MNc5g6M2TiDeKr6P_sSfys2JYc_Ihfa8sL58amYyukCiIyd8fOQVbJhfP3jGoHqhPK0--YFChLN_dS3IJ0AGbiGZjPhTIxJD5X_qu4W12zGtPpOUuFXfe7T5SQ"/>
+<div class="absolute top-sm right-sm flex gap-xs">
+<span class="bg-surface-dim/80 backdrop-blur-sm px-xs py-xs rounded text-primary font-label-sm text-label-sm border border-primary/20">Quads</span>
+<span class="bg-surface-dim/80 backdrop-blur-sm px-xs py-xs rounded text-secondary font-label-sm text-label-sm border border-secondary/20">Beginner</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-grow bg-gradient-to-br from-[#1C1C26] to-[#16161E]">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Barbell Squat</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-md">Fundamental compound movement for lower body strength and power development.</p>
+<div class="mt-auto">
+<button class="w-full bg-primary-container text-on-primary-container font-body-md text-body-md font-bold py-sm rounded-full hover:bg-primary-container/90 transition-colors shadow-[0_0_10px_rgba(0,102,255,0.2)] hover:shadow-[0_0_15px_rgba(0,102,255,0.4)]">
+                                Learn Technique
+                            </button>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-surface-container border border-outline-variant rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-[0_0_15px_rgba(0,102,255,0.15)] transition-all duration-300 flex flex-col group">
+<div class="relative h-48 w-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic, high-contrast shot of an athlete at the peak of a deadlift lockout in a premium dark training facility. Dramatic side lighting highlights the knurling on the barbell and the tension in the athlete's posterior chain. Subtle electric blue ambient light fills the dark background, maintaining a corporate modern, elite performance aesthetic. Sharp focus on the athlete with a slightly blurred gym background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPGB2AI8uRDbYp7e9IQ-JxT5TN6a_1IoxjQSxLAEKBrOmTD10fNQ-lEGWMJxW6rN53pzqttcbGlwqrAVnPRwbL-6w7hoZbhcNAsTJj5COlwImGlCnbK_DJHIlPfOJzdqYgGoLE2C3B227ibGioNe2cXaVpyH2YJG6BWDRH2DVD6U3DapEKEvFnJ2rb1Cg_2SChwWdHHv0bvDnb1djjosi5dGRhLj43o-OXZxlDwabZVQcTMJDYbwfsOQ"/>
+<div class="absolute top-sm right-sm flex gap-xs">
+<span class="bg-surface-dim/80 backdrop-blur-sm px-xs py-xs rounded text-primary font-label-sm text-label-sm border border-primary/20">Hamstrings</span>
+<span class="bg-surface-dim/80 backdrop-blur-sm px-xs py-xs rounded text-error font-label-sm text-label-sm border border-error/20">Advanced</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-grow bg-gradient-to-br from-[#1C1C26] to-[#16161E]">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Deadlift</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-md">Essential lift for overall posterior chain development and raw pulling strength.</p>
+<div class="mt-auto">
+<button class="w-full border border-primary text-primary font-body-md text-body-md font-bold py-sm rounded-full hover:bg-primary/10 transition-colors">
+                                Learn Technique
+                            </button>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-surface-container border border-outline-variant rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-[0_0_15px_rgba(0,102,255,0.15)] transition-all duration-300 flex flex-col group">
+<div class="relative h-48 w-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic, high-contrast image of an athlete performing a Bulgarian split squat with dumbbells. The setting is a sleek, dark high-end gym. Deep shadows contrast with bright, focused spotlights on the athlete's working leg, emphasizing the muscular detail. The background features subtle electric blue neon accents to reinforce a premium, high-tech fitness brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN17NI52vWk297ub6v33caVji7uXuuu-5z7vVfxzlV1hoOE-kdSV5PFqdXGPcddcAaknW2xLOGd-5gDbbhNKkpRwwUoSllrK64yv5LhcZ7LoamsG4EJrdPPBPdx0RZp6yNDLVuvN99XhEKYhHQXfCryK2RPCWdza6b-e4fjTwPOjeR75aYUBEB7mVdmXmemSkoSBE4lh9U5t5CDHvMDaIiAw1_DM4TfD2pZgNXLVGgoCu7At5yTgeffQ"/>
+<div class="absolute top-sm right-sm flex gap-xs">
+<span class="bg-surface-dim/80 backdrop-blur-sm px-xs py-xs rounded text-primary font-label-sm text-label-sm border border-primary/20">Glutes</span>
+<span class="bg-surface-dim/80 backdrop-blur-sm px-xs py-xs rounded text-tertiary font-label-sm text-label-sm border border-tertiary/20">Intermediate</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-grow bg-gradient-to-br from-[#1C1C26] to-[#16161E]">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Bulgarian Split Squat</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-md">Unilateral lower body exercise for addressing imbalances and building functional leg strength.</p>
+<div class="mt-auto">
+<button class="w-full border border-primary text-primary font-body-md text-body-md font-bold py-sm rounded-full hover:bg-primary/10 transition-colors">
+                                Learn Technique
+                            </button>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="bg-surface-container border border-outline-variant rounded-xl overflow-hidden hover:border-primary/50 hover:shadow-[0_0_15px_rgba(0,102,255,0.15)] transition-all duration-300 flex flex-col group">
+<div class="relative h-48 w-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A dramatic low-angle shot of an athlete pressing a barbell overhead (military press) in a premium dark gym environment. High-contrast lighting outlines the athlete's shoulders and triceps against a stark black background. Minimalist aesthetic with subtle electric blue environmental reflections, conveying a sense of elite power and precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOIyh4SHSXbbNzEfpvTeRrl9rHMM6vvOsaida5_dwh3aV99l3AZXqzJ96UJFAVa_EuXhgrqNYUbUJ1M7SkiTcqsiQiaCCU237dr_SK5RhehGDbO-qbGxTs0QcmyY-LT-4xXFRNFk_F3rwyiMzWk67rg8nj3_MBMDocrHKq71C6DqFURAEs9hpLO0HhcMXZ-s9ZFZECD82ng6mubEOkJYPQMDCgUK20f2RQYOjJPic8xOSIhxF4hpXfDw"/>
+<div class="absolute top-sm right-sm flex gap-xs">
+<span class="bg-surface-dim/80 backdrop-blur-sm px-xs py-xs rounded text-primary font-label-sm text-label-sm border border-primary/20">Shoulders</span>
+<span class="bg-surface-dim/80 backdrop-blur-sm px-xs py-xs rounded text-tertiary font-label-sm text-label-sm border border-tertiary/20">Intermediate</span>
+</div>
+</div>
+<div class="p-md flex flex-col flex-grow bg-gradient-to-br from-[#1C1C26] to-[#16161E]">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-xs">Overhead Press</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 mb-md">Primary vertical pushing movement for building robust shoulder and core stability.</p>
+<div class="mt-auto">
+<button class="w-full border border-primary text-primary font-body-md text-body-md font-bold py-sm rounded-full hover:bg-primary/10 transition-colors">
+                                Learn Technique
+                            </button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Footer -->
+<footer class="w-full py-xl bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline-variant flex flex-col items-center text-center px-margin-mobile gap-gutter mt-auto">
+<h2 class="font-headline-md text-headline-md text-on-surface dark:text-on-surface mb-sm">MASTER TRAINER</h2>
+<div class="flex flex-wrap justify-center gap-md font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Exercises</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Programs</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Nutrition</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Knowledge</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Safety Disclaimer</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary transition-colors cursor-pointer" href="#">Privacy Policy</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant mt-md">© 2024 Master Trainer Elite Athlete Development. All rights reserved.</p>
+</footer>
+</main>
+<style>
+        /* Utility for hiding scrollbar in category tabs while allowing scroll */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>
