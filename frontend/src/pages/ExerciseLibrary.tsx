@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Exercise } from '../types';
+import { API_BASE_URL } from '../config';
 
 type DifficultyFilter = 'All' | 'Beginner' | 'Intermediate' | 'Advanced';
 type MuscleFilter = 'All' | 'Quads' | 'Hamstrings' | 'Glutes' | 'Shoulders';
@@ -18,7 +19,7 @@ export default function ExerciseLibrary() {
   const categories = ['Strength', 'Speed', 'Agility', 'Mobility', 'Recovery'];
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/exercises')
+    fetch(`${API_BASE_URL}/api/exercises`)
       .then((res) => res.json())
       .then((data) => {
         setExercises(data);

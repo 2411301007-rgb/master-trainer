@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import type { Exercise, Hotspot } from '../types';
+import { API_BASE_URL } from '../config';
 
 export default function ExerciseDetail() {
   const { id } = useParams<{ id: string }>();
@@ -12,7 +13,7 @@ export default function ExerciseDetail() {
   const [logging, setLogging] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:5001/api/exercises/${id}`)
+    fetch(`${API_BASE_URL}/api/exercises/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error('Exercise not found');
         return res.json();
@@ -30,7 +31,7 @@ export default function ExerciseDetail() {
   const handleCompleteWorkout = () => {
     setLogging(true);
     // Complete workout for today (e.g. index 5, Saturday or whatever is active)
-    fetch('http://localhost:5001/api/dashboard/complete-workout', {
+    fetch(`${API_BASE_URL}/api/dashboard/complete-workout`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ dayIndex: 5 }) // Simulate logging for Saturday (Day 6)

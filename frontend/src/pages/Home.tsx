@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import type { Program } from '../types';
+import { API_BASE_URL } from '../config';
 
 export default function Home() {
   const navigate = useNavigate();
   const [programs, setPrograms] = useState<Program[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:5001/api/programs')
+    fetch(`${API_BASE_URL}/api/programs`)
       .then((res) => res.json())
       .then((data) => {
         setPrograms(data);

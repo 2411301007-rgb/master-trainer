@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { DashboardData } from '../types';
 
+import { API_BASE_URL } from '../config';
+
 export default function AthleteDashboard() {
   const navigate = useNavigate();
   const [data, setData] = useState<DashboardData | null>(null);
   const [loading, setLoading] = useState(true);
 
   const fetchDashboardData = () => {
-    fetch('http://localhost:5001/api/dashboard')
+    fetch(`${API_BASE_URL}/api/dashboard`)
       .then((res) => {
         if (!res.ok) throw new Error();
         return res.json();
@@ -62,7 +64,7 @@ export default function AthleteDashboard() {
     const clickedDay = data.weeklyProgress.days[index];
     if (clickedDay.completed) return; // Already completed
 
-    fetch('http://localhost:5001/api/dashboard/complete-workout', {
+    fetch(`${API_BASE_URL}/api/dashboard/complete-workout`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ dayIndex: index })
